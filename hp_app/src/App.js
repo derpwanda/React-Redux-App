@@ -6,7 +6,7 @@ import './App.css';
 const App = () => {
   return (
     <div className="App">
-      Harry Potter React App
+      <h1>Harry Potter React App</h1>
       <CharacterList />
     </div>
   );

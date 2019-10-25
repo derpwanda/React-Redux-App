@@ -10,29 +10,24 @@ const initialState = {
 };
 
 export const charReducer = (state = initialState, action) => {
-    console.log('reducer', action)
+    // console.log('reducer', action)
     switch (action.type) {
         case FETCH_HPCHAR_START:
-            return {
-                ...state,
-                isFetching: true,
-                error: ''
-            };
+            return Object.assign({}, state, { isFetching: true, error: '' });
+
         case FETCH_HPCHAR_SUCCESS:
-            return {
-                ...state,
-                characters: action.payload,
+            return Object.assign({}, state, {
+                characters: [...state.characters, ...action.payload],
                 isFetching: false,
                 error: ''
-            };
+            });
+
         case FETCH_HPCHAR_FAILURE:
-            return {
-                ...state,
+            return Object.assign({}, state, {
+                isFetching: false,
                 error: action.payload
-            }
+            });
         default:
             return state;
     }
 }
-
-// export default charReducer;

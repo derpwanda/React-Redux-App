@@ -16,31 +16,11 @@ export const getHPChars = () => dispatch => {
     axios
         .get(`${URL}${KEY}`)
         .then(res => {
+            console.log("RES", res)
             dispatch({ type: FETCH_HPCHAR_SUCCESS, payload: res.data })
         })
         .catch(err => {
+            console.log(err)
             dispatch({ type: FETCH_HPCHAR_FAILURE, payload: err.response })
         })
 }
-
-// export const getHPChars = () => {
-//     console.log("URL", promise)
-//     return dispatch => {
-//         dispatch({ type: FETCH_HPCHAR_START })
-//         promise // axios GET
-//             .then(res => {
-//                 console.log("fetchCharResponse", res)
-//                 dispatch({
-//                     type: FETCH_HPCHAR_SUCCESS,
-//                     payload: res.data
-//                 })
-//             })
-//             .catch(err => {
-//                 console.log("fetchCharError", err)
-//                 dispatch({
-//                     type: FETCH_HPCHAR_FAILURE,
-//                     payload: err
-//                 })
-//             })
-//     }
-// }
