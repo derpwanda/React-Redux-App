@@ -31,3 +31,5 @@ export const charReducer = (state = initialState, action) => {
             return state;
     }
 }
+
+console.log("CharacterREducer", charReducer)

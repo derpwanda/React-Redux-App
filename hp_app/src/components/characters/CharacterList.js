@@ -3,29 +3,35 @@ import SingleCharacter from "./SingleCharacter";
 import { connect } from 'react-redux';
 import { getHPChars } from '../../actions/CharactersActions'
 
-const CharacterList = (props, { getHPChars }) => {
+const CharacterList = props => {
     console.log("before useE", props)
 
     useEffect(() => {
         props.getHPChars();
     }, [])
 
-    console.log("props", props)
+    console.log("props", props.characters)
     return (
         <div>
             <h2>Characters</h2>
-            <SingleCharacter />
+            {props.isFetching && <p>Getting Our Characters!</p>}
+            {props.characters.map(item => (
+                <SingleCharacter key={item._id} person={item} />
+            ))}
         </div>
     )
 }
 
+// const mapDispatchToProps = (dispatch) => ({
 
+// })
 const mapStateToProps = state => {
-    console.log("MSTP", state)
+    console.log("MSTP", state.charReducer)
     return {
-        characters: state.characters,
-        error: state.error,
-        isFetching: state.isFetching
+        characters: state.charReducer.characters,
+        error: state.charReducer.error,
+        isFetching: state.charReducer.isFetching
+        // state: state.charReducer.characters
     }
 
 }

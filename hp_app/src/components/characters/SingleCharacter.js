@@ -1,10 +1,10 @@
 import React from 'react'
 
-const SingleCharacter = () => {
+const SingleCharacter = props => {
     return (
-        <div>
-            <p>Name</p>
-        </div>
+        <ul>
+            <h4>{props.person.name}</h4>
+        </ul>
     )
 }
 

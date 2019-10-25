@@ -16,7 +16,7 @@ export const getHPChars = () => dispatch => {
     axios
         .get(`${URL}${KEY}`)
         .then(res => {
-            console.log("RES", res)
+            console.log("RES", res.data)
             dispatch({ type: FETCH_HPCHAR_SUCCESS, payload: res.data })
         })
         .catch(err => {
